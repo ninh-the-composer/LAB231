@@ -1,0 +1,185 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 29, 2020, 4:32:43 PM
+    Author     : Ninh
+*/
+html{
+    background-color: #c2baaf;
+    background-image: url('../images/wallpaper-white.jpg');
+    font-family: 'Alegreya Sans',Helvetica,Arial,sans-serif;
+
+}
+body{
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    background-color: white;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 17px #6d5160;
+}
+footer{
+    padding: 1rem;
+}
+h1{
+    font-size: xxx-large;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+h2{
+    font-size: larger;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: lighter;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+header{
+    padding: 1rem;
+    padding-bottom: 0;
+    background-color: #edeae1;
+    color:#6d5160;
+}
+header li{
+    display: inline-block;
+}
+header a{
+    text-decoration: none;
+    color:black;
+}
+.nav{
+    margin-top: 2rem;
+}
+.nav li{
+    margin: 0.5rem;
+    margin-left: 0;
+}
+.active{
+    font-weight: bold;
+}
+.page-content{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+.blog-title{
+    font-size: x-large;
+    font-weight: bold;
+}
+.side-banner{
+    padding: 1rem;
+}
+.banner-title{
+    font-weight: bold;
+    font-size: larger;
+}
+.side-container{
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #6d5160;
+}
+.side-container a{
+    color: black;
+}
+.pagging-bar{
+    text-align: center;
+}
+.pagging-bar li{
+    display: inline-block;
+}
+.pagging-item{
+    color: black;
+    text-decoration: none;
+}
+.current-page{
+    font-weight: bold;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 29, 2020, 4:33:19 PM
+    Author     : Ninh
+*/
+.row{
+    border-bottom: 3px dotted rgba(0,0,0,0.2);
+    display: flex;
+    margin: 1rem 0;
+}
+.row img{
+    width: 10%;
+    height: 100%;
+}
+.post{
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.post-title{
+    margin: 0.5rem 0;
+}
+.post-title a{
+    font-size: larger;
+    font-weight: bold;
+    display: inline;
+    color: black;
+}
+.post-date{
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    font-style: italic;
+}
+.post-content a{
+    float: left;
+    display: inline-block;
+    width: 50%;
+    margin: 0 1rem 0.5rem 0;
+}
+.post-content img{
+    width: 100%;
+    border-radius: 15px;
+}
+.quote{
+    border-right: 5px solid black;
+    text-align: right;
+    padding-right: 1rem;
+}
+.quote-content{
+    font-style: italic;
+    font-size: 16px;
+}
+.quote-author{
+    font-size: 13px;
+}
+.overview{
+    display: block;
+    text-align: center;
+    color: black;
+}
+.overview-item{
+    width: 100%;
+    border-top: 2px solid rgba(0,0,0,0.2);
+    color: black;
+    padding: 0.5rem;
+}
+.overview-item a{
+    color: black;
+}
+.overview-item-date{
+    float: right;
+}
+.overview-container{
+    margin-top: 2rem;
+}
+.error-message{
+    color: red;
+    font-size: xxx-large;
+}
