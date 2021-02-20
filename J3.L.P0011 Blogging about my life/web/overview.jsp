@@ -15,6 +15,9 @@
         <title>Overview</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/home.css">
+        <style>
+            
+        </style>
     </head>
 
     <body>
@@ -30,20 +33,23 @@
             <div class="container">
                 <div class="blog-title">Overview - My Blog</div>
                 <div class="overview-container">
-                    <div class="overview-item">
-                       NOVEMBER 2015 <!-- This is a fixed overview date, I will upgrade this later, HAPPY NEW YEAR!!!-->
+                    <c:forEach var="groupPost" items="${posts}">
+                    <div class="overview-item ">
+                        ${groupPost.key}
                         <div class="overview-item-date">
                             date
                         </div>
                     </div>
-                    <c:forEach var="post" items="${postList}">
-                        <div class="overview-item">
-                            <a href="post?id=${post.id}">${post.title}</a>
-                            <div class="overview-item-date">
-                                ${post.createdAt}
+                        <c:forEach var="post" items="${groupPost.value}">
+                            <div class="overview-item">
+                                <a href="post?id=${post.id}">${post.title}</a>
+                                <div class="overview-item-date">
+                                    ${post.createdAt}
+                                </div>
                             </div>
-                        </div>
+                        </c:forEach>
                     </c:forEach>
+                    
                 </div>
             </div>
             <div class="side-banner">
@@ -57,9 +63,6 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <hr>
-            <div class="">Created by Ninhdepzai</div>
-        </footer>
+        <jsp:include page="common/footer.jsp"/>
     </body>
 </html>

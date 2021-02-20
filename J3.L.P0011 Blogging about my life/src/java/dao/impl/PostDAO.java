@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
+import dao.DBContext;
+import dao.IPostDAO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,22 +18,39 @@ import model.Post;
  *
  * @author Ninh
  */
-public class PostDAO extends DBContext {
-    public int countPosts(){
+public class PostDAO implements IPostDAO {
+
+    @Override
+    public int countPosts() throws Exception {
+        DBContext dbc = new DBContext();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         int count = 0;
         String sql = "select count(*) [r] from Post ";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            con = dbc.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
                 count = rs.getInt("r");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
+        } finally {
+            dbc.closeConntection(con);
+            dbc.closePreparedStatement(ps);
+            dbc.closeResultSet(rs);
         }
         return count;
     }
-    public List<Post> getPosts(int page, int postAPage) {
+
+    @Override
+    public List<Post> getPosts(int page, int postAPage) throws Exception {
+        DBContext dbc = new DBContext();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         int start = (page - 1) * postAPage;
         start = start < 0 ? 0 : start;
         List<Post> data = new ArrayList<>();
@@ -39,10 +59,11 @@ public class PostDAO extends DBContext {
                 + "offset ? rows\n"
                 + "fetch next ? rows only";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            con = dbc.getConnection();
+            ps = con.prepareStatement(sql);
             ps.setInt(1, start);
             ps.setInt(2, postAPage);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             while (rs.next()) {
                 String id = rs.getString("id");
                 String title = rs.getString("title");
@@ -54,19 +75,29 @@ public class PostDAO extends DBContext {
                 data.add(p);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             data = null;
+            throw e;
+        } finally {
+            dbc.closeConntection(con);
+            dbc.closePreparedStatement(ps);
+            dbc.closeResultSet(rs);
         }
         return data;
     }
-    
-    public Post getPost(String id){
+
+    @Override
+    public Post getPost(String id) throws Exception {
+        DBContext dbc = new DBContext();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         Post p = null;
         String sql = "select * from post where id = ?";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            con = dbc.getConnection();
+            ps = con.prepareStatement(sql);
             ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 String title = rs.getString("title");
                 String type = rs.getString("type");
@@ -76,12 +107,13 @@ public class PostDAO extends DBContext {
                 p = new Post(id, title, type, image_path, content, createdAt);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
+        } finally {
+            dbc.closeConntection(con);
+            dbc.closePreparedStatement(ps);
+            dbc.closeResultSet(rs);
         }
         return p;
     }
-    public static void main(String[] args) {
-        PostDAO dao = new PostDAO();
-        System.out.println(dao.getPost("2"));
-    }
+
 }

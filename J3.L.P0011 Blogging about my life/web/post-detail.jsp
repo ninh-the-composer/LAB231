@@ -96,9 +96,6 @@
                 <a class="overview" href="overview">Overview</a>
             </div>
         </div>
-        <footer>
-            <hr>
-            <div class="">Created by Ninhdepzai</div>
-        </footer>
+        <jsp:include page="common/footer.jsp"/>
     </body>
 </html>

@@ -5,15 +5,10 @@
  */
 package controller;
 
-import dao.PostDAO;
-import dao.SocialDAO;
+import dao.impl.PostDAO;
+import dao.impl.SocialDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,16 +35,20 @@ public class PostDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        PostDAO dao = new PostDAO();
-        SocialDAO socialDao = new SocialDAO();
-        
-        Post p = dao.getPost(id);
-        List<Social> socialList = socialDao.getSocials();
-        
-        request.setAttribute("post", p);
-        request.setAttribute("socialList", socialList);
-        request.getRequestDispatcher("post-detail.jsp").forward(request, response);
+        try {
+            String id = request.getParameter("id");
+            PostDAO dao = new PostDAO();
+            SocialDAO socialDao = new SocialDAO();
+
+            Post p = dao.getPost(id);
+            List<Social> socialList = socialDao.getSocials();
+
+            request.setAttribute("post", p);
+            request.setAttribute("socialList", socialList);
+            request.getRequestDispatcher("post-detail.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.getRequestDispatcher("common/error.jsp").forward(request, response);
+        }
     }
 
     /**

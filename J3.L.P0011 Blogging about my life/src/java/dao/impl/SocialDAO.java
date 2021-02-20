@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
+import dao.DBContext;
+import dao.ISocialDAO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,14 +19,22 @@ import model.Social;
  *
  * @author Ninh
  */
-public class SocialDAO extends DBContext{
-    public List<Social> getSocials(){
+public class SocialDAO extends DBContext implements ISocialDAO {
+
+    @Override
+    public List<Social> getSocials() throws Exception {
+        DBContext dbc = new DBContext();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Post p = null;
         List<Social> data = new ArrayList<>();
         String sql = "select * from Social";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            con = dbc.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 String id = rs.getString("id");
                 String name = rs.getString("name");
                 String icon = rs.getString("icon");
@@ -31,14 +42,14 @@ public class SocialDAO extends DBContext{
                 data.add(s);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             data = null;
+            throw e;
+        } finally {
+            dbc.closeConntection(con);
+            dbc.closePreparedStatement(ps);
+            dbc.closeResultSet(rs);
         }
-    return data;
+        return data;
     }
-    
-    public static void main(String[] args) {
-        SocialDAO dao = new SocialDAO();
-        System.out.println(dao.getSocials());
-    }
+
 }

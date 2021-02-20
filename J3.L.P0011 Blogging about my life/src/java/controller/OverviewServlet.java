@@ -5,10 +5,11 @@
  */
 package controller;
 
-import dao.PostDAO;
-import dao.SocialDAO;
+import dao.*;
+import dao.impl.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.time.Month;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,13 +37,18 @@ public class OverviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SocialDAO socialDao = new SocialDAO();
-        List<Social> socialList = socialDao.getSocials();
-        PostDAO postDao = new PostDAO();
-        List<Post> postList = postDao.getPosts(0, 100);
-        request.setAttribute("postList", postList);
-        request.setAttribute("socialList", socialList);
-        request.getRequestDispatcher("overview.jsp").forward(request, response);
+        try {
+            ISocialDAO socialDao = new SocialDAO();
+            List<Social> socialList = socialDao.getSocials();
+            IOverviewDAO postDao = new OverviewDAO();
+            HashMap<String, List<Post>> posts = postDao.getGroupedPosts();
+            request.setAttribute("posts", posts);
+            request.setAttribute("socialList", socialList);
+            request.getRequestDispatcher("overview.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.getRequestDispatcher("common/error.jsp").forward(request, response);
+
+        }
     }
 
     /**

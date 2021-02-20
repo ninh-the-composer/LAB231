@@ -5,10 +5,9 @@
  */
 package controller;
 
-import dao.PostscriptDAO;
-import dao.SocialDAO;
+import dao.impl.PostscriptDAO;
+import dao.impl.SocialDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,15 +35,19 @@ public class AboutMeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SocialDAO socialDao = new SocialDAO();
-        PostscriptDAO postscriptDao = new PostscriptDAO();
-        
-        List<Social> socialList = socialDao.getSocials();
-        Postscript ps = postscriptDao.getPostcript();
-        
-        request.setAttribute("socialList", socialList);
-        request.setAttribute("postscript", ps);
-        request.getRequestDispatcher("about-me.jsp").forward(request, response);
+        try {
+            SocialDAO socialDao = new SocialDAO();
+            PostscriptDAO postscriptDao = new PostscriptDAO();
+
+            List<Social> socialList = socialDao.getSocials();
+            Postscript ps = postscriptDao.getPostcript();
+
+            request.setAttribute("socialList", socialList);
+            request.setAttribute("postscript", ps);
+            request.getRequestDispatcher("about-me.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.getRequestDispatcher("common/error.jsp").forward(request, response);
+        }
     }
 
     /**

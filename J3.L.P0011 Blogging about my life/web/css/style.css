@@ -67,6 +67,9 @@ header a{
     display: grid;
     grid-template-columns: 75% 25%;
 }
+.container{
+    margin-right: 1rem;
+}
 .blog-title{
     font-size: x-large;
     font-weight: bold;
@@ -164,7 +167,12 @@ and open the template in the editor.
     text-align: center;
     color: black;
 }
+.overview-group{
+    font-weight: bold;
+    font-size: 24px;
+}
 .overview-item{
+
     width: 100%;
     border-top: 2px solid rgba(0,0,0,0.2);
     color: black;
@@ -182,4 +190,17 @@ and open the template in the editor.
 .error-message{
     color: red;
     font-size: xxx-large;
+}
+.footer-page-counter {
+    text-align: right;
+    display: inline-block;
+}
+.footer-page-counter-item {
+    margin: 0px;
+    border-radius: 5px;
+    font-weight: initial;
+    box-shadow: 5px white;
+}
+.footer-page-counter-item:before {
+    height: 0;
 }

@@ -15,6 +15,7 @@
         <title>Home</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/home.css">
+        
     </head>
     <body>
         <header>
@@ -69,11 +70,11 @@
                                     </c:when>
                                     <c:otherwise>
                                         <a href="post?id=${post.id}"><img src="images/${post.imagePath}" alt="post image"></a>
-                                        <c:set var="quote" value="${post.content}" scope="request"/>
-                                        <%
-                                            String quote = (String) request.getAttribute("quote");
-                                            quote = quote.replaceAll("\n", "<br/>");
-                                        %>
+                                            <c:set var="quote" value="${post.content}" scope="request"/>
+                                            <%
+                                                String quote = (String) request.getAttribute("quote");
+                                                quote = quote.replaceAll("\n", "<br/>");
+                                            %>
                                         <p><%=quote %></p>
                                     </c:otherwise>
                                 </c:choose>
@@ -85,7 +86,7 @@
                     <ul>
                         <c:set var="cPage" value="${param.page eq null ? 1 : param.page}"/>
                         <c:forEach var="page" items="${pages}" >
-                            
+
                             <li><a href="home?page=${page}" class="${page eq cPage ? "current-page":""} pagging-item">${page}</a></li>
                         </c:forEach>
                     </ul>
@@ -106,9 +107,6 @@
                 <a class="overview" href="overview">Overview</a>
             </div>
         </div>
-        <footer>
-            <hr>
-            <div class="">Created by Ninhdepzai</div>
-        </footer>
+        <jsp:include page="common/footer.jsp"/>
     </body>
 </html>
