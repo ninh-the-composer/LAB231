@@ -25,7 +25,7 @@ footer{
     padding: 1rem;
 }
 h1{
-    font-size: xxx-large;
+    font-size: 47px;
     margin: 0;
     margin-left: 0.5rem;
 }
@@ -189,7 +189,7 @@ and open the template in the editor.
 }
 .error-message{
     color: red;
-    font-size: xxx-large;
+    font-size: 47px;
 }
 .footer-page-counter {
     text-align: right;
@@ -197,10 +197,21 @@ and open the template in the editor.
 }
 .footer-page-counter-item {
     margin: 0px;
-    border-radius: 5px;
-    font-weight: initial;
-    box-shadow: 5px white;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 2px;
+    box-shadow: 0 1px 2px #595959;
 }
 .footer-page-counter-item:before {
     height: 0;
+}
+.thanks{
+    margin-top: 2.5rem;
+}
+.signature{
+    font-size: 36px;
+    font-family: cursive;
+    margin: 0;
 }

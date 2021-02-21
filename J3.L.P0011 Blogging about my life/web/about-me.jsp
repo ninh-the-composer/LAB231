@@ -15,16 +15,6 @@
         <title>About Me</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/home.css">
-        <style>
-            .thanks{
-                margin-top: 2.5rem;
-            }
-            .signature{
-                font-size: 36px;
-                font-family: cursive;
-                margin: 0;
-            }
-        </style>
     </head>
     <body>
         <header>
