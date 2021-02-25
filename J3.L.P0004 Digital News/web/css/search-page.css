@@ -1,0 +1,14 @@
+.page-current {
+    color: red;
+    font-weight: bold;
+}
+.pagging-item{
+    display: inline-block;
+    color: black;
+    font-size: 22px;
+    text-decoration: none;
+}
+.current-page{
+    font-weight: bold;
+    text-decoration: underline;
+}
