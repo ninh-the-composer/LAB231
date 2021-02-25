@@ -42,7 +42,7 @@ public class ArticleServlet extends HttpServlet {
             IArticleDAO articleAccessing = new ArticleDAO();
             List<Article> topArticles = articleAccessing.getArticles(6);
             Article currentArticle = articleAccessing.getArticleById(id);
-            
+            if(currentArticle == null) throw new Exception();
             for(int i = 0; i < topArticles.size(); i++){
                 if(topArticles.get(i).getId() == id){
                     topArticles.remove(i);
@@ -53,9 +53,9 @@ public class ArticleServlet extends HttpServlet {
             }
             request.setAttribute("currentArticle", currentArticle);
             request.setAttribute("top5Articles", topArticles);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            request.setAttribute("error", "Article Not Found");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }

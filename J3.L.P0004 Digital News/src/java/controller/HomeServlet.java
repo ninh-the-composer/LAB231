@@ -43,9 +43,9 @@ public class HomeServlet extends HttpServlet {
             topArticles.remove(mostRecentArticle);
             request.setAttribute("currentArticle", mostRecentArticle);
             request.setAttribute("top5Articles", topArticles);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            request.setAttribute("error", "Homepage Not Found");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }

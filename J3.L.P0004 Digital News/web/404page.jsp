@@ -22,7 +22,7 @@
 
                 <div class="left">
                     
-                    <h1>${requestScope.error}</h1>
+                    <h1>Page Not Found</h1>
                     
                 </div>
               

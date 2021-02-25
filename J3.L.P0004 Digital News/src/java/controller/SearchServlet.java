@@ -53,7 +53,7 @@ public class SearchServlet extends HttpServlet {
             request.setAttribute("maxPage", maxPage);
             request.getRequestDispatcher("search.jsp").forward(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            request.setAttribute("error", "Search Page Not Found");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }

@@ -1,0 +1,42 @@
+.right {
+  width: 230px;
+  padding: 10px;
+}
+
+.right_container {
+  width: 100%;
+  font-size: 13px;
+}
+
+.new_title {
+  color: #42554e;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+}
+
+.search {
+  border: 1px dashed;
+}
+
+.go {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: #999999;
+}
+
+.top5 {
+  padding-bottom: 20px;
+}
+
+.top5 a {
+  color: #42554e;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/*.top5-article-link{
+   
+}*/
