@@ -1,9 +1,10 @@
 <%-- 
-    Document   : home
+    Document   : menu
     Created on : Feb 18, 2021, 10:33:58 PM
     Author     : sogor
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,39 +23,33 @@
             <div class="nav">
                 <ul class="navbar-items">
                     <li>
-                        <a class="navbar-link active" href="home">Home</a>
+                        <a class="navbar-link" href="home">Home</a>
                     </li>
                     <li>
-                        <a class="navbar-link" href="menu">Menu and Price list</a>
+                        <a class="navbar-link active" href="menu">Menu and Price list</a>
                     </li>
                     <li>
                         <a class="navbar-link" href="find-us">Find us</a>
                     </li>
-
                 </ul>
             </div>
         </header>
         <div class="container">
             <div class="page-content">
-                <div class="banner"><img src="image/banner.jpg"></div>
-                <c:forEach var="item" items="${postList}">
-                <div class="row">
-                    <h2 class="post-heading">${item.title}</h2>
-                    <p class="post-container"> 
-                        <img src="image/${item.imagePath}" />
-                        <span>${item.content}</span>
-                    </p>
+            <h2 class="post-heading">Menu and Price list</h2>
+            <c:forEach var="menu" items="${menuList}">
+            <div class="row item">
+                <div class="menu-title post-container">
+                    <span class="align-left small-padding">Menu 1</span>
+                    <span class="align-right small-padding">Price</span>
                 </div>
-                </c:forEach>
-                <!--PAGING-->
-                <ul class="paging">
-                    <c:forEach var="page" begin="1" end="${maxPage}" >
-                        <li class="${param.page == page || (page == 1 && empty param.page) ? "active" : ""}">
-                            <a href="home?page=${page}">${page}</a>
-                        </li>
-                    </c:forEach>
-                </ul>    
-                <!--PAGING-->
+                <div class="post-container">
+                    <span class="align-left small-padding">${menu.name}</span>
+                    <span class="align-right small-padding">€${menu.price}</span> 
+                </div>
+                <p class="menu-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
+            </c:forEach>
             </div>
             <div class="side-banner">
                 <div class="side-container">

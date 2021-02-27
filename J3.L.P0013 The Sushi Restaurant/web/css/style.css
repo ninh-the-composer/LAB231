@@ -1,0 +1,200 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 29, 2020, 4:32:43 PM
+    Author     : Ninh
+*/
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+html{
+    background-color: #d5f46b;
+    background-image: url('../images/wallpaper-white.jpg');
+    font-family: 'Alegreya Sans',Helvetica,Arial,sans-serif;
+
+}
+body{
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    background-color: white;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 17px #6d5160;
+}
+footer{
+    padding: 1rem;
+}
+
+h2{
+    font-size: larger;
+    margin-top: 0.5rem; 
+}
+p{
+    font-family: 'Quattrocento Sans',Helvetica,Arial,sans-serif;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+header{
+    padding: 0;
+    background-color: #535353;
+    color:#6d5160;
+}
+.title-wrapper{
+    padding: 2rem 1.3rem;
+}
+.title-wrapper h1{
+    color: #d5f46b;
+    font-size: 47px;
+    margin: 0;
+}
+.title-wrapper p{
+    font-size: 22px;
+    color: white;
+    margin: 0;
+}
+header li{
+    display: inline-block;
+}
+header a{
+    text-decoration: none;
+    color:black;
+}
+.nav{
+    padding: 0 1rem;
+    background-color: #303030;
+}
+.nav li{
+    margin: 0.5rem 2rem 0.5rem 0rem;
+}
+.navbar-items{
+    margin: 0;
+}
+.navbar-link{
+    color: white;
+}
+.navbar-link:hover{
+    text-decoration: underline;
+}
+.active{
+    font-weight: bold;
+}
+.container{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 75% 1fr;
+}
+.page-content{
+    margin-right: 1rem;
+}
+.banner{
+    padding-bottom: 2rem;
+    border-bottom: 3px dotted rgba(0,0,0,0.2);
+}
+.banner img{
+    width: 100%;
+    border-radius: 15px;
+}
+.row{
+    margin: 1rem 0;
+}
+.post-heading{
+    padding: 0.5rem 0;
+    font-size: 28px;
+}
+.post-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.post-container span{
+    margin-left: 1rem;
+    line-height: 22px;
+}
+.post-container img{
+    display: inline-block;
+    width: 100%;
+    border-radius: 15px;
+}
+.side-banner{
+    padding: 0 1rem;
+}
+.banner-title{
+    font-weight: bold;
+    font-size: larger;
+}
+.side-container{
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #6d5160;
+}
+.side-container a{
+    color: black;
+}
+.footer-page-counter {
+    text-align: right;
+    display: inline-block;
+}
+.footer-page-counter-item {
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 2px;
+    box-shadow: 0 1px 2px #595959;
+}
+.footer-page-counter-item:before {
+    height: 0;
+}
+.menu-title{
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.small-padding{
+    padding: 0.5rem 0;
+}
+.align-left{
+    text-align: left;
+}
+.align-right{
+    text-align: right;
+}
+.menu-content{
+    margin: 1rem 0 0 0.5rem;  
+}
+.item{
+    border-bottom: 3px dotted rgba(0,0,0,0.2);
+}
+.item:last-child{
+    border-bottom: 0;
+}
+.address-detail{
+    font-weight: 100;
+}
+.address-detail span{
+    text-decoration: underline;
+}
+.error{
+    color: red;
+    font-size: 47px;
+}
+/* pagination */
+.paging {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.paging a {
+    text-decoration: none;
+    padding: 4px;
+    font-size: 20px;
+    color: #535353;
+}
+
+.paging li{
+    list-style: none;
+}

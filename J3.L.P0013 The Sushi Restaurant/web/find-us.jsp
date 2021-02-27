@@ -1,5 +1,5 @@
 <%-- 
-    Document   : home
+    Document   : menu
     Created on : Feb 18, 2021, 10:33:58 PM
     Author     : sogor
 --%>
@@ -22,13 +22,13 @@
             <div class="nav">
                 <ul class="navbar-items">
                     <li>
-                        <a class="navbar-link active" href="home">Home</a>
+                        <a class="navbar-link" href="home">Home</a>
                     </li>
                     <li>
                         <a class="navbar-link" href="menu">Menu and Price list</a>
                     </li>
                     <li>
-                        <a class="navbar-link" href="find-us">Find us</a>
+                        <a class="navbar-link active" href="#">Find us</a>
                     </li>
 
                 </ul>
@@ -36,25 +36,32 @@
         </header>
         <div class="container">
             <div class="page-content">
-                <div class="banner"><img src="image/banner.jpg"></div>
-                <c:forEach var="item" items="${postList}">
-                <div class="row">
-                    <h2 class="post-heading">${item.title}</h2>
-                    <p class="post-container"> 
-                        <img src="image/${item.imagePath}" />
-                        <span>${item.content}</span>
-                    </p>
+                <h2 class="post-heading">Find us</h2>
+
+                <div class="row item">
+                    <div class="post-container">
+                        <div class="align-left" >
+                            <h2>Address and contact:</h2>
+                            <p class="address-detail">The Sushi Restaurant<br>New York, NY, USA</p>
+                            <p class="address-detail">Tel &#9;: <span>1234</span></p>
+                            <p class="address-detail">Email &#9;: <span>ngu@gmail.com</span></p>
+                        </div>
+                        <div class="align-left">
+                            <h2>Opening hours:</h2>
+                            <p class="address-detail">Monday Closed<br/>
+                                Tuesday 12 - 22<br/>
+                                Wednesday 12 - 22<br/>
+                                Thursday 12 - 22<br/>
+                                Friday 11 - 23<br/>
+                                Saturday 11 - 23<br/>
+                                Sunday 11 - 22<br/>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                </c:forEach>
-                <!--PAGING-->
-                <ul class="paging">
-                    <c:forEach var="page" begin="1" end="${maxPage}" >
-                        <li class="${param.page == page || (page == 1 && empty param.page) ? "active" : ""}">
-                            <a href="home?page=${page}">${page}</a>
-                        </li>
-                    </c:forEach>
-                </ul>    
-                <!--PAGING-->
+                <div class="row item">
+                    <img src="image/gmap.png"  style="width: 100%">
+                </div>
             </div>
             <div class="side-banner">
                 <div class="side-container">

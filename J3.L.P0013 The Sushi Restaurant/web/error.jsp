@@ -1,5 +1,5 @@
 <%-- 
-    Document   : home
+    Document   : error
     Created on : Feb 18, 2021, 10:33:58 PM
     Author     : sogor
 --%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>The Sushi Restaurant</title>
+        <title>Page Not Found - The Sushi Restaurant</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -22,7 +22,7 @@
             <div class="nav">
                 <ul class="navbar-items">
                     <li>
-                        <a class="navbar-link active" href="home">Home</a>
+                        <a class="navbar-link" href="home">Home</a>
                     </li>
                     <li>
                         <a class="navbar-link" href="menu">Menu and Price list</a>
@@ -36,25 +36,8 @@
         </header>
         <div class="container">
             <div class="page-content">
-                <div class="banner"><img src="image/banner.jpg"></div>
-                <c:forEach var="item" items="${postList}">
-                <div class="row">
-                    <h2 class="post-heading">${item.title}</h2>
-                    <p class="post-container"> 
-                        <img src="image/${item.imagePath}" />
-                        <span>${item.content}</span>
-                    </p>
-                </div>
-                </c:forEach>
-                <!--PAGING-->
-                <ul class="paging">
-                    <c:forEach var="page" begin="1" end="${maxPage}" >
-                        <li class="${param.page == page || (page == 1 && empty param.page) ? "active" : ""}">
-                            <a href="home?page=${page}">${page}</a>
-                        </li>
-                    </c:forEach>
-                </ul>    
-                <!--PAGING-->
+                <h2 class="post-heading error">${error}</h2>
+                <p>Click <a href="home"> here</a> to back to Homepage</p>
             </div>
             <div class="side-banner">
                 <div class="side-container">
