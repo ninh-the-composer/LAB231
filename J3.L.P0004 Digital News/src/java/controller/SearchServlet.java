@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+     * Copyright(C) 2021,  FPT University.
+     * J3.L.P0004 Digital News
+     * Record of change:
+     * DATE              Version             AUTHOR                 DESCRIPTION
+     * 2021-02-25        1.0              NinhTBMHE141325           Initial commit
  */
 package controller;
 
@@ -9,8 +11,6 @@ import dao.IArticleDAO;
 import dao.impl.ArticleDAO;
 import entity.Article;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author sogor
+ * This class get information from Database through DAO Layer.<br>
+ * The class supplies most Article information use for display Search page.<br>
+ * @author NinhTBMHE141325
  */
 @WebServlet(name = "SearchServlet", urlPatterns = {"/search"})
 public class SearchServlet extends HttpServlet {
@@ -38,15 +39,21 @@ public class SearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            // Get search keyword from url parameter.
             String keyword = request.getParameter("keyword");
+            // Get number of Articles will display in a page from Initial Parameter in Context Parameters
             int articlesAPage = Integer.parseInt(getServletContext().getInitParameter("articlesAPage"));
-            int page = request.getParameter("p") == null ? 0 : Integer.parseInt(request.getParameter("page"));
+            // Get page number from url parameter. If parameter is not number or not found, set page to default 1.
+            int page = request.getParameter("page") == null ? 0 : Integer.parseInt(request.getParameter("page"));
+            
             IArticleDAO articleAccessing = new ArticleDAO();
+            // Get top 5 most recent Article supplies display in right banner
             List<Article> topArticles = articleAccessing.getArticles(5);
+            // Get List of Articles will display in specify page and specify number of article a page by search keyword.
             List<Article> searchResult = articleAccessing.search(keyword, articlesAPage, page);
             
+            // Maximum number of page website can to display to user.
             int maxPage = (int) Math.ceil(articleAccessing.getNumberResultsSearched(keyword) / ((double) articlesAPage));
-            
             
             request.setAttribute("searchResult", searchResult);
             request.setAttribute("top5Articles", topArticles);

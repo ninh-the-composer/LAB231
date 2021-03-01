@@ -1,7 +1,11 @@
 <%-- 
+    
+    Copyright(C) 2021,  FPT University.
+    J3.L.P0004 Digital News
     Document   : error
-    Created on : Feb 19, 2021, 5:55:58 PM
-    Author     : Administrator
+    Record of change:
+    DATE              Version             AUTHOR                 DESCRIPTION
+    2021-02-25        1.0              NinhTBMHE141325           Initial commit
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+     * Copyright(C) 2021,  FPT University.
+     * J3.L.P0004 Digital News
+     * Record of change:
+     * DATE              Version             AUTHOR                 DESCRIPTION
+     * 2021-02-25        1.0              NinhTBMHE141325           Initial commit
  */
 package dao.impl;
 
@@ -16,11 +18,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author sogor
+ * This class supplies all method need to display an Article Page.<br>
+ * The method implements IArticleDAO.<br>
+ * The method will throw an object  of <code>java.lang.Exception</code> class.<br>
+ * if there is any error occurring when searching or getting data.
+ * @author NinhTBMHE141325
  */
 public class ArticleDAO implements IArticleDAO {
 
+    /**
+     * This method return top most recent Articles from Database, number of
+     * Article input by user.
+     *
+     * @param top Number of Articles will return.
+     * @return Top recent Articles from Database.
+     * @throws Exception provide information about database access error.
+     */
     @Override
     public List<Article> getArticles(int top) throws Exception {
         DBContext dbc = new DBContext();
@@ -33,7 +46,7 @@ public class ArticleDAO implements IArticleDAO {
             con = dbc.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
                 String imagePath = rs.getString("image_path");
@@ -54,6 +67,16 @@ public class ArticleDAO implements IArticleDAO {
         return listArticle;
     }
 
+    /**
+     * This method return Articles searched from Database, those will display in
+     * an search page.
+     *
+     * @param keyword Search keyword, input by user.
+     * @param articlesAPage Number of Articles will display in an page.
+     * @param page Number of page. Ex: 1, 2, 3...
+     * @return List of Articles from Database.
+     * @throws Exception provide information about database access error.
+     */
     @Override
     public List<Article> search(String keyword, int articlesAPage, int page) throws Exception {
         DBContext dbc = new DBContext();
@@ -70,11 +93,11 @@ public class ArticleDAO implements IArticleDAO {
         try {
             con = dbc.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+keyword.trim()+"%");
+            ps.setString(1, "%" + keyword.trim() + "%");
             ps.setInt(2, start);
             ps.setInt(3, articlesAPage);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
                 String imagePath = rs.getString("image_path");
@@ -95,6 +118,13 @@ public class ArticleDAO implements IArticleDAO {
         return listArticle;
     }
 
+    /**
+     * This method return an Article by inputted Id from Database.
+     *
+     * @param id Primatives type integer, ID of article.
+     * @return Specify Article with id inputted.
+     * @throws Exception provide information about database access error.
+     */
     @Override
     public Article getArticleById(int id) throws Exception {
         DBContext dbc = new DBContext();
@@ -108,7 +138,7 @@ public class ArticleDAO implements IArticleDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 String title = rs.getString("title");
                 String imagePath = rs.getString("image_path");
                 String content = rs.getString("content");
@@ -127,6 +157,14 @@ public class ArticleDAO implements IArticleDAO {
         return article;
     }
 
+    /**
+     * This method will return number of ALL articles has been searched by
+     * keyword from Database.
+     *
+     * @param keyword Search keyword, input by user.
+     * @return number of searched Article.
+     * @throws Exception provide information about database access error.
+     */
     @Override
     public int getNumberResultsSearched(String keyword) throws Exception {
         DBContext dbc = new DBContext();
@@ -138,10 +176,10 @@ public class ArticleDAO implements IArticleDAO {
         try {
             con = dbc.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+keyword.trim()+"%");
+            ps.setString(1, "%" + keyword.trim() + "%");
             rs = ps.executeQuery();
-            if(rs.next()){
-              r = rs.getInt("r");
+            if (rs.next()) {
+                r = rs.getInt("r");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,6 +191,5 @@ public class ArticleDAO implements IArticleDAO {
         }
         return r;
     }
-    
-    
+
 }

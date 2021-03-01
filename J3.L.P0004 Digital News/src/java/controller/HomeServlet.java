@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+     * Copyright(C) 2021,  FPT University.
+     * J3.L.P0004 Digital News
+     * Record of change:
+     * DATE              Version             AUTHOR                 DESCRIPTION
+     * 2021-02-25        1.0              NinhTBMHE141325           Initial commit
  */
 package controller;
 
@@ -10,8 +12,6 @@ import dao.impl.ArticleDAO;
 import entity.Article;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author sogor
+ * This class get information from Database through DAO Layer.<br>
+ * The class supplies most Article information use for display Home page.<br>
+ * @author NinhTBMHE141325
  */
 @WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
 public class HomeServlet extends HttpServlet {
@@ -37,10 +38,13 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            IArticleDAO articleAccessing = new ArticleDAO();
-            List<Article> topArticles = articleAccessing.getArticles(6);
+            IArticleDAO articleDao = new ArticleDAO();
+            // Get 6 most recent Articles include top 1 recent Article.
+            List<Article> topArticles = articleDao.getArticles(6);
+            // Get top 1 recent Article from 6 most recent Articles, then remove from 6.
             Article mostRecentArticle = topArticles.get(0);
             topArticles.remove(mostRecentArticle);
+            
             request.setAttribute("currentArticle", mostRecentArticle);
             request.setAttribute("top5Articles", topArticles);
             request.getRequestDispatcher("index.jsp").forward(request, response);
